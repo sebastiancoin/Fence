@@ -68,6 +68,7 @@ class DirectionalView: UIView {
         }
     }
     
+    
     override func drawRect(rect: CGRect) {
         
         clipsToBounds = false

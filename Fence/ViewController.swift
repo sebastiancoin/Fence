@@ -13,6 +13,8 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet var compass: DirectionalView!
+    @IBOutlet var fireButton: UIButton!
+    @IBOutlet var profileImage: UIImageView!
     
     lazy var locationManager: CLLocationManager = {
        let man = CLLocationManager()
@@ -37,7 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fireButton.enabled = false
         if let p = Player.currentPlayer() {
             currentPlayer = p
         }
@@ -53,7 +55,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
                     image, error in
                     // TODO: set image
-                    //self.currentPlayer.image = image
+                    self.currentPlayer.image = image
+                    self.profileImage.image = image
                     if let _ = error { println(error) }
                 }
             }
@@ -69,6 +72,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func fire(sender: UIButton) {
+        
+    }
+    
     // MARK: CL
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -89,7 +96,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        compass.currentLocation = newLocation
+        UIView.animateWithDuration(0.3) {
+            self.compass.currentLocation = newLocation
+        }
         if currentPlayer == nil {
             API.registerInitialLocation(newLocation, completion: {_ in})
         } else {
