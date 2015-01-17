@@ -12,6 +12,8 @@
 		230CB3901A6A64E10083B406 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB38F1A6A64E10083B406 /* APIManager.swift */; };
 		230CB3921A6A6FDC0083B406 /* FlickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB3911A6A6FDC0083B406 /* FlickView.swift */; };
 		230CB3941A6A7A850083B406 /* DirectionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB3931A6A7A850083B406 /* DirectionalView.swift */; };
+		E42838EA1A6A9E3400A031D0 /* Fence.app in Resources */ = {isa = PBXBuildFile; fileRef = E439B67E1A6A444D007933BE /* Fence.app */; };
+		E42838EB1A6A9E3500A031D0 /* Fence.app in Resources */ = {isa = PBXBuildFile; fileRef = E439B67E1A6A444D007933BE /* Fence.app */; };
 		E439B6841A6A444D007933BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6831A6A444D007933BE /* AppDelegate.swift */; };
 		E439B6861A6A444D007933BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6851A6A444D007933BE /* ViewController.swift */; };
 		E439B6891A6A444D007933BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E439B6871A6A444D007933BE /* Main.storyboard */; };
@@ -218,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E439B6891A6A444D007933BE /* Main.storyboard in Resources */,
+				E42838EA1A6A9E3400A031D0 /* Fence.app in Resources */,
 				E439B68E1A6A444D007933BE /* LaunchScreen.xib in Resources */,
 				E439B68B1A6A444D007933BE /* Images.xcassets in Resources */,
 			);
@@ -227,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E42838EB1A6A9E3500A031D0 /* Fence.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
