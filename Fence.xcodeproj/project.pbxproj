@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E439B6841A6A444D007933BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6831A6A444D007933BE /* AppDelegate.swift */; };
+		E439B6861A6A444D007933BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6851A6A444D007933BE /* ViewController.swift */; };
+		E439B6891A6A444D007933BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E439B6871A6A444D007933BE /* Main.storyboard */; };
+		E439B68B1A6A444D007933BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E439B68A1A6A444D007933BE /* Images.xcassets */; };
+		E439B68E1A6A444D007933BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E439B68C1A6A444D007933BE /* LaunchScreen.xib */; };
+		E439B69A1A6A444D007933BE /* FenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6991A6A444D007933BE /* FenceTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E439B6941A6A444D007933BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E439B6761A6A444D007933BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E439B67D1A6A444D007933BE;
+			remoteInfo = Fence;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E439B67E1A6A444D007933BE /* Fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fence.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E439B6821A6A444D007933BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E439B6831A6A444D007933BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E439B6851A6A444D007933BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E439B6881A6A444D007933BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E439B68A1A6A444D007933BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E439B68D1A6A444D007933BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		E439B6931A6A444D007933BE /* FenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E439B6981A6A444D007933BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E439B6991A6A444D007933BE /* FenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenceTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E439B67B1A6A444D007933BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E439B6901A6A444D007933BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E439B6751A6A444D007933BE = {
+			isa = PBXGroup;
+			children = (
+				E439B6801A6A444D007933BE /* Fence */,
+				E439B6961A6A444D007933BE /* FenceTests */,
+				E439B67F1A6A444D007933BE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E439B67F1A6A444D007933BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E439B67E1A6A444D007933BE /* Fence.app */,
+				E439B6931A6A444D007933BE /* FenceTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E439B6801A6A444D007933BE /* Fence */ = {
+			isa = PBXGroup;
+			children = (
+				E439B6831A6A444D007933BE /* AppDelegate.swift */,
+				E439B6851A6A444D007933BE /* ViewController.swift */,
+				E439B6871A6A444D007933BE /* Main.storyboard */,
+				E439B68A1A6A444D007933BE /* Images.xcassets */,
+				E439B68C1A6A444D007933BE /* LaunchScreen.xib */,
+				E439B6811A6A444D007933BE /* Supporting Files */,
+			);
+			path = Fence;
+			sourceTree = "<group>";
+		};
+		E439B6811A6A444D007933BE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E439B6821A6A444D007933BE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E439B6961A6A444D007933BE /* FenceTests */ = {
+			isa = PBXGroup;
+			children = (
+				E439B6991A6A444D007933BE /* FenceTests.swift */,
+				E439B6971A6A444D007933BE /* Supporting Files */,
+			);
+			path = FenceTests;
+			sourceTree = "<group>";
+		};
+		E439B6971A6A444D007933BE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E439B6981A6A444D007933BE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E439B67D1A6A444D007933BE /* Fence */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E439B69D1A6A444D007933BE /* Build configuration list for PBXNativeTarget "Fence" */;
+			buildPhases = (
+				E439B67A1A6A444D007933BE /* Sources */,
+				E439B67B1A6A444D007933BE /* Frameworks */,
+				E439B67C1A6A444D007933BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fence;
+			productName = Fence;
+			productReference = E439B67E1A6A444D007933BE /* Fence.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E439B6921A6A444D007933BE /* FenceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E439B6A01A6A444D007933BE /* Build configuration list for PBXNativeTarget "FenceTests" */;
+			buildPhases = (
+				E439B68F1A6A444D007933BE /* Sources */,
+				E439B6901A6A444D007933BE /* Frameworks */,
+				E439B6911A6A444D007933BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E439B6951A6A444D007933BE /* PBXTargetDependency */,
+			);
+			name = FenceTests;
+			productName = FenceTests;
+			productReference = E439B6931A6A444D007933BE /* FenceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E439B6761A6A444D007933BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Arani Bhattacharyay";
+				TargetAttributes = {
+					E439B67D1A6A444D007933BE = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					E439B6921A6A444D007933BE = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = E439B67D1A6A444D007933BE;
+					};
+				};
+			};
+			buildConfigurationList = E439B6791A6A444D007933BE /* Build configuration list for PBXProject "Fence" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E439B6751A6A444D007933BE;
+			productRefGroup = E439B67F1A6A444D007933BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E439B67D1A6A444D007933BE /* Fence */,
+				E439B6921A6A444D007933BE /* FenceTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E439B67C1A6A444D007933BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E439B6891A6A444D007933BE /* Main.storyboard in Resources */,
+				E439B68E1A6A444D007933BE /* LaunchScreen.xib in Resources */,
+				E439B68B1A6A444D007933BE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E439B6911A6A444D007933BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E439B67A1A6A444D007933BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E439B6861A6A444D007933BE /* ViewController.swift in Sources */,
+				E439B6841A6A444D007933BE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E439B68F1A6A444D007933BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E439B69A1A6A444D007933BE /* FenceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E439B6951A6A444D007933BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E439B67D1A6A444D007933BE /* Fence */;
+			targetProxy = E439B6941A6A444D007933BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E439B6871A6A444D007933BE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E439B6881A6A444D007933BE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E439B68C1A6A444D007933BE /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E439B68D1A6A444D007933BE /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E439B69B1A6A444D007933BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E439B69C1A6A444D007933BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E439B69E1A6A444D007933BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Fence/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E439B69F1A6A444D007933BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Fence/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E439B6A11A6A444D007933BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FenceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fence.app/Fence";
+			};
+			name = Debug;
+		};
+		E439B6A21A6A444D007933BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FenceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fence.app/Fence";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E439B6791A6A444D007933BE /* Build configuration list for PBXProject "Fence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E439B69B1A6A444D007933BE /* Debug */,
+				E439B69C1A6A444D007933BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E439B69D1A6A444D007933BE /* Build configuration list for PBXNativeTarget "Fence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E439B69E1A6A444D007933BE /* Debug */,
+				E439B69F1A6A444D007933BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E439B6A01A6A444D007933BE /* Build configuration list for PBXNativeTarget "FenceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E439B6A11A6A444D007933BE /* Debug */,
+				E439B6A21A6A444D007933BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E439B6761A6A444D007933BE /* Project object */;
+}
