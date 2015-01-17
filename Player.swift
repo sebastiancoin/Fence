@@ -9,6 +9,8 @@
 import CoreLocation
 import UIKit
 
+let kPlayerIDKey = "kPlayerIDKey"
+
 class Player {
     var image: UIImage?
     var target: Player?
@@ -23,5 +25,19 @@ class Player {
     
     init(id: String) {
         self.id = id
+    }
+    
+    class func currentPlayer() -> Player? {
+        let defaults = NSUserDefaults()
+        if let playerID = defaults.stringForKey(kPlayerIDKey) {
+            return Player(id: playerID)
+        } else {
+            return nil
+        }
+    }
+    
+    func saveAsCurrent() {
+        let defaults = NSUserDefaults()
+        defaults.setObject(id, forKey: kPlayerIDKey)
     }
 }

@@ -20,7 +20,7 @@
                                 <rect key="frame" x="16" y="20" width="134" height="134"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogT-ee-PvI" customClass="DirectionalView" customModule="Fence" customModuleProvider="target">
-                                <rect key="frame" x="16" y="20" width="300" height="300"/>
+                                <rect key="frame" x="158" y="20" width="134" height="134"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>

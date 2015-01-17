@@ -38,8 +38,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let p = Player.currentPlayer() {
+            currentPlayer = p
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
-        compass.targetLocation = CLLocation(latitude: 0, longitude: 0)
+        // 42.292572, -83.716294
+
+        compass.targetLocation = CLLocation(latitude: 42.292572, longitude: -83.716294)
         loadLocalPlayer {
             user in
             if let completedUser = user {
@@ -83,15 +90,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        
-        API.postLocationChange(user: currentPlayer, location: newLocation)
         compass.currentLocation = newLocation
+        if currentPlayer == nil {
+            API.registerInitialLocation(newLocation, completion: {_ in})
+        } else {
+            API.postLocationChange(user: currentPlayer, location: newLocation)
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
         
         // TODO: UPDATE COMPASS
-        compass.currentHeading = newHeading
+//        UIView.animateWithDuration(0.3) {
+//            self.compass.currentHeading = newHeading
+//        }
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.99, initialSpringVelocity: 0, options: .allZeros, animations: {
+            self.compass.currentHeading = newHeading
+            }, completion: nil)
     }
     
     // MARK: GK

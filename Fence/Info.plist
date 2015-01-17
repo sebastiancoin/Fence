@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSLocationUsageDescription</key>
 	<string>murder</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>murder</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
