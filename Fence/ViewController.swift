@@ -13,6 +13,7 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet var targetImageView: UIImageView!
+    @IBOutlet var compass: DirectionalView!
     
     lazy var locationManager: CLLocationManager = {
        let man = CLLocationManager()
@@ -38,6 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        compass.targetLocation = CLLocation(latitude: 0, longitude: 0)
         loadLocalPlayer {
             user in
             if let completedUser = user {
@@ -79,7 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         
         API.postLocationChange(user: currentPlayer, location: newLocation)
-        
+        compass.currentLocation = newLocation
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
