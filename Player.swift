@@ -13,6 +13,7 @@ class Player {
     var image: UIImage?
     var target: Int?
     var hunter: Int?
+    var id: Int?
     
     /*
     var requiredAccuracy: CLLocationAccuracy {

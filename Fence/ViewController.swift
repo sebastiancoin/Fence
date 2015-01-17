@@ -46,7 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 // start game process here!
                 completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
                     image, error in
-                    self.targetImageView.image = image
+                    self.currentPlayer.image = image
                     if let _ = error { println(error) }
                 }
             }
@@ -79,8 +79,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         
-        // TODO: POST THIS SHIT
+        API.postLocationChange(userID: 0, location: newLocation)
         
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
+        
+        // TODO: UPDATE COMPASS
     }
     
     // MARK: GK
