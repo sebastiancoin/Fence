@@ -13,10 +13,6 @@ class API {
         // TODO: POST
     }
     
-    class func requestNewTarget(#user: Player, completion: (target: Player) -> ()) {
-        // TODO: GET
-    }
-    
     class func registerInitialLocation(location: CLLocation, completion: (currentPlayer: Player) -> ()) {
         // TODO: POST
     }
