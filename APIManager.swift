@@ -10,6 +10,10 @@ import CoreLocation
 
 class API {
     class func postLocationChange(#userID: Int, location: CLLocation) {
-        
+        // TODO: POST
+    }
+    
+    class func requestNewTarget(#userID: Int, completion: Player -> ()) {
+        // TODO: GET
     }
 }
