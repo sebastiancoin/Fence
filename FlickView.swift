@@ -10,12 +10,12 @@ import UIKit
 
 class FlickView: UIView {
     @IBOutlet var flickedView: UIView!
-    lazy private var gesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self,
-        action: "handlePan")
+    lazy var gesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self,
+        action: "handlePan:")
     
     
     var minY: CGFloat {
-        return frame.height * 0.25
+        return frame.height * 0.05
     }
     
     func handlePan(recognizer: UIPanGestureRecognizer) {
@@ -25,7 +25,7 @@ class FlickView: UIView {
         f.origin = CGPoint(x: f.origin.x, y: f.origin.y + point.y)
         flickedView.frame = f
         if f.origin.y <= minY {
-            UIView.animateWithDuration(0.01) {
+            UIView.animateWithDuration(0.2) {
                 self.backgroundColor = UIColor.greenColor()
                 var f = self.flickedView.frame
                 f.origin.y = -self.flickedView.frame.height
