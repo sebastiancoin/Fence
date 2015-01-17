@@ -9,11 +9,19 @@
 import CoreLocation
 
 class API {
-    class func postLocationChange(#userID: Int, location: CLLocation) {
+    class func postLocationChange(#user: Player, location: CLLocation) {
         // TODO: POST
     }
     
-    class func requestNewTarget(#userID: Int, completion: Player -> ()) {
+    class func requestNewTarget(#user: Player, completion: (target: Player) -> ()) {
         // TODO: GET
+    }
+    
+    class func registerInitialLocation(location: CLLocation, completion: (currentPlayer: Player) -> ()) {
+        // TODO: POST
+    }
+    
+    class func deregisterUser() {
+        
     }
 }
