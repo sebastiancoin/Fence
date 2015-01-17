@@ -17,6 +17,10 @@ func radiansToDegrees(radians: Double) -> Double {
     return radians * 180 / M_PI
 }
 
+func milesToFeet(miles: Double) -> Double {
+    return miles * 5280
+}
+
 extension CLLocationDistance {
     var miles: Double {
         return self / 1609.344
@@ -99,5 +103,13 @@ class DirectionalView: UIView {
         let context = UIGraphicsGetCurrentContext()
         let stem = CGRect(x: halfHeight - 16, y: halfHeight, width: 32, height: height)
         CGContextFillRect(context, stem)
+        
+        let dFeet = milesToFeet(dUsers)
+        UIColor.blackColor().setStroke()
+        var paraStyle = NSMutableParagraphStyle()
+        paraStyle.alignment = .Center
+        let label = "\(Int(ceil(dFeet))) ft" as NSString
+        label.drawInRect(CGRect(x: 8, y: halfHeight-14, width: width - 16, height: 14),
+            withAttributes: [NSParagraphStyleAttributeName:paraStyle])
     }
 }
