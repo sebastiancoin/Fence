@@ -23,15 +23,25 @@ class DirectionalView: UIView {
         }
     }
     
+    var currentHeading: CLHeading? {
+        didSet {
+            calculateBearing()
+        }
+    }
+    
     func calculateBearing() {
         if let target = targetLocation {
             if let current = currentLocation {
-                let dx = current.coordinate.longitude - target.coordinate.longitude
-                let dy = current.coordinate.latitude - target.coordinate.latitude
-                
-                let bearing = atan2(dy, dx)
-                
-                self.transform = CGAffineTransformMakeRotation(CGFloat(bearing))
+                if let head = currentHeading {
+                    let dx = current.coordinate.longitude - target.coordinate.longitude
+                    let dy = current.coordinate.latitude - target.coordinate.latitude
+                    
+                    let bearing = atan2(dy, dx) + head.trueHeading
+                    
+                    self.transform = CGAffineTransformMakeRotation(CGFloat(bearing))
+                    
+                    setNeedsDisplay()
+                }
             }
         }
     }
@@ -43,6 +53,8 @@ class DirectionalView: UIView {
         let path = UIBezierPath()
         path.moveToPoint(CGPoint(x: 0, y: -radius))
         path.addLineToPoint(CGPoint(x: a, y: b))
+        path.addLineToPoint(CGPoint(x: -a, y: b))
         path.closePath()
+        path.fill()
     }
 }

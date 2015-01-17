@@ -52,6 +52,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+        
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,6 +91,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
         
         // TODO: UPDATE COMPASS
+        compass.currentHeading = newHeading
     }
     
     // MARK: GK

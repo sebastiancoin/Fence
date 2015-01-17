@@ -19,10 +19,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAr-1c-qtr">
                                 <rect key="frame" x="16" y="20" width="134" height="134"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogT-ee-PvI" customClass="DirectionalView" customModule="Fence" customModuleProvider="target">
+                                <rect key="frame" x="16" y="20" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="compass" destination="ogT-ee-PvI" id="93b-sZ-rj7"/>
                         <outlet property="targetImageView" destination="uAr-1c-qtr" id="3eL-R8-cCd"/>
                     </connections>
                 </viewController>
