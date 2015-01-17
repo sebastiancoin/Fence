@@ -20,8 +20,4 @@ class API {
     class func registerInitialLocation(location: CLLocation, completion: (currentPlayer: Player) -> ()) {
         // TODO: POST
     }
-    
-    class func deregisterUser() {
-        
-    }
 }
