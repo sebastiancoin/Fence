@@ -8,10 +8,34 @@
 
 import UIKit
 import GameKit
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet var targetImageView: UIImageView!
+    
+    lazy var locationManager: CLLocationManager = {
+       let man = CLLocationManager()
+        man.delegate = self
+        man.desiredAccuracy = kCLLocationAccuracyBest
+        switch CLLocationManager.authorizationStatus() {
+        case .Authorized:
+            man.startUpdatingLocation()
+        case .NotDetermined:
+            man.requestAlwaysAuthorization()
+        case .Denied:
+            fallthrough
+        case .Restricted:
+            UIAlertView(title: "Yo We Need This",
+                message: "Without location services, there's no point",
+                delegate: nil, cancelButtonTitle: "Dismiss").show()
+        default:
+            break
+        }
+        return man
+    }()
+    
+    var currentPlayer = Player()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +44,9 @@ class ViewController: UIViewController {
             user in
             if let completedUser = user {
                 // start game process here!
-                println(completedUser)
-                completedUser.loadPhotoForSize(GKPhotoSizeSmall) {
+                completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
                     image, error in
-                    self.targetImageView.image = image
+                    self.currentPlayer.image = image
                     if let _ = error { println(error) }
                 }
             }
@@ -35,6 +58,37 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: CL
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .Authorized:
+            manager.startUpdatingLocation()
+        case .AuthorizedWhenInUse:
+            fallthrough
+        case .Restricted:
+            fallthrough
+        case .Denied:
+            UIAlertView(title: "Yo We Need This",
+                message: "Without location services, there's no point",
+                delegate: nil, cancelButtonTitle: "Dismiss").show()
+        default:
+            break
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        
+        API.postLocationChange(userID: 0, location: newLocation)
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
+        
+        // TODO: UPDATE COMPASS
+    }
+    
+    // MARK: GK
 
     func loadLocalPlayer(completion: GKLocalPlayer? -> ()) {
         let local = GKLocalPlayer.localPlayer()
