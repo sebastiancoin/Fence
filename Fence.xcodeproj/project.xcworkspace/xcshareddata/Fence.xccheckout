@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2C9A929F-2FCD-459E-AAF0-909C84A22C1F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Fence</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>967F780222FB1908A2756BF9D8F092538B94B39A</key>
+		<string>https://github.com/FenceAtMHacks/Fence.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Fence.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>967F780222FB1908A2756BF9D8F092538B94B39A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/FenceAtMHacks/Fence.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>967F780222FB1908A2756BF9D8F092538B94B39A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>967F780222FB1908A2756BF9D8F092538B94B39A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Fence</string>
+		</dict>
+	</array>
+</dict>
+</plist>
