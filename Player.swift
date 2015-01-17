@@ -11,9 +11,9 @@ import UIKit
 
 class Player {
     var image: UIImage?
-    var target: Int?
-    var hunter: Int?
-    var id: Int?
+    var target: Player?
+    var hunter: Player?
+    var id: String
     
     /*
     var requiredAccuracy: CLLocationAccuracy {
@@ -21,7 +21,7 @@ class Player {
         return (target != nil || hunter != nil) ? kCLLocationAccuracyBest : kCLLocationAccuracyHundredMeters
     }*/
     
-    init() {
-        
+    init(id: String) {
+        self.id = id
     }
 }

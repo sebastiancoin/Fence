@@ -10,6 +10,7 @@
 		230CB38A1A6A495A0083B406 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230CB3891A6A495A0083B406 /* GameKit.framework */; };
 		230CB38E1A6A5C9C0083B406 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB38D1A6A5C9C0083B406 /* Player.swift */; };
 		230CB3901A6A64E10083B406 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB38F1A6A64E10083B406 /* APIManager.swift */; };
+		230CB3921A6A6FDC0083B406 /* FlickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB3911A6A6FDC0083B406 /* FlickView.swift */; };
 		E439B6841A6A444D007933BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6831A6A444D007933BE /* AppDelegate.swift */; };
 		E439B6861A6A444D007933BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6851A6A444D007933BE /* ViewController.swift */; };
 		E439B6891A6A444D007933BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E439B6871A6A444D007933BE /* Main.storyboard */; };
@@ -31,7 +32,8 @@
 /* Begin PBXFileReference section */
 		230CB3891A6A495A0083B406 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		230CB38D1A6A5C9C0083B406 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = ../Player.swift; sourceTree = "<group>"; };
-		230CB38F1A6A64E10083B406 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		230CB38F1A6A64E10083B406 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = ../APIManager.swift; sourceTree = "<group>"; };
+		230CB3911A6A6FDC0083B406 /* FlickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickView.swift; path = ../FlickView.swift; sourceTree = "<group>"; };
 		E439B67E1A6A444D007933BE /* Fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E439B6821A6A444D007933BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E439B6831A6A444D007933BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +68,6 @@
 		E439B6751A6A444D007933BE = {
 			isa = PBXGroup;
 			children = (
-				230CB38F1A6A64E10083B406 /* APIManager.swift */,
 				230CB3891A6A495A0083B406 /* GameKit.framework */,
 				E439B6801A6A444D007933BE /* Fence */,
 				E439B6961A6A444D007933BE /* FenceTests */,
@@ -89,6 +90,8 @@
 				E439B6831A6A444D007933BE /* AppDelegate.swift */,
 				E439B6851A6A444D007933BE /* ViewController.swift */,
 				230CB38D1A6A5C9C0083B406 /* Player.swift */,
+				230CB38F1A6A64E10083B406 /* APIManager.swift */,
+				230CB3911A6A6FDC0083B406 /* FlickView.swift */,
 				E439B6871A6A444D007933BE /* Main.storyboard */,
 				E439B68A1A6A444D007933BE /* Images.xcassets */,
 				E439B68C1A6A444D007933BE /* LaunchScreen.xib */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				230CB3901A6A64E10083B406 /* APIManager.swift in Sources */,
+				230CB3921A6A6FDC0083B406 /* FlickView.swift in Sources */,
 				E439B6861A6A444D007933BE /* ViewController.swift in Sources */,
 				230CB38E1A6A5C9C0083B406 /* Player.swift in Sources */,
 				E439B6841A6A444D007933BE /* AppDelegate.swift in Sources */,

@@ -19,8 +19,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         man.delegate = self
         man.desiredAccuracy = kCLLocationAccuracyBest
         switch CLLocationManager.authorizationStatus() {
-        case .Authorized:
-            man.startUpdatingLocation()
         case .NotDetermined:
             man.requestAlwaysAuthorization()
         case .Denied:
@@ -35,7 +33,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         return man
     }()
     
-    var currentPlayer = Player()
+    var currentPlayer: Player!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +44,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 // start game process here!
                 completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
                     image, error in
-                    self.currentPlayer.image = image
+                    // TODO: set image
+                    //self.currentPlayer.image = image
                     if let _ = error { println(error) }
                 }
             }
@@ -79,7 +78,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         
-        API.postLocationChange(userID: 0, location: newLocation)
+        API.postLocationChange(user: currentPlayer, location: newLocation)
         
     }
     
