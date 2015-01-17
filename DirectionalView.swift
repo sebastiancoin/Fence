@@ -25,9 +25,15 @@ extension CLLocationDistance {
     var miles: Double {
         return self / 1609.344
     }
+    
+    var feet: Double {
+        return milesToFeet(miles)
+    }
 }
 
 class DirectionalView: UIView {
+    
+    var relativeAngle: Double = 0.0
     
     var targetLocation: CLLocation? {
         didSet {
@@ -59,8 +65,8 @@ class DirectionalView: UIView {
                     let y = sin(deltalng) * cos(lat2)
                     let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(deltalng)
                     let bearing = (atan2(y, x) + (2 * M_PI)) % (2 * M_PI)
-                    let tformAngle = bearing - degreesToRadians(head.trueHeading)
-                    transform = CGAffineTransformMakeRotation(CGFloat(tformAngle))
+                    relativeAngle = bearing - degreesToRadians(head.trueHeading)
+                    transform = CGAffineTransformMakeRotation(CGFloat(relativeAngle))
                     
                     setNeedsDisplay()
                 }

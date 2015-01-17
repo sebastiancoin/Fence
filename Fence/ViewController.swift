@@ -37,6 +37,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var currentPlayer: Player!
     
+    var armed = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fireButton.enabled = false
@@ -55,7 +57,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
                     image, error in
                     // TODO: set image
-                    self.currentPlayer.image = image
+                    //self.currentPlayer.image = image
                     self.profileImage.image = image
                     if let _ = error { println(error) }
                 }
@@ -72,8 +74,50 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    func pop(timeLeft: Int, _ label: UILabel) {
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC))
+        dispatch_after(popTime, dispatch_get_main_queue()) {
+            if timeLeft > 0 {
+                label.text = "\(timeLeft) seconds"
+                self.pop(timeLeft - 1, label)
+            } else {
+                label.removeFromSuperview()
+                self.armed = false
+                self.updateFireButtonImage()
+            }
+        }
+    }
+    
     @IBAction func fire(sender: UIButton) {
-        
+        println("FIRE!")
+        sender.setImage(UIImage(named: "Fire Open Pressed"), forState: .Normal)
+        let timeOutLabel = UILabel(frame: sender.frame)
+        timeOutLabel.textAlignment = .Center
+        view.addSubview(timeOutLabel)
+        var timeLeft = 15
+        armed = false
+        updateFireButtonImage()
+        pop(timeLeft, timeOutLabel)
+    }
+    
+    func updateFireButtonImage() {
+        if armed {
+            let me = locationManager.location
+            let targetLocation: CLLocation? = CLLocation(latitude: 42.292572, longitude: -83.716294)
+            if let target = targetLocation {
+                let distance = me.distanceFromLocation(target).feet
+                
+                if distance <= 50 {
+                    fireButton.enabled = true
+                } else {
+                    fireButton.enabled = false
+                }
+            } else {
+                fireButton.enabled = false
+            }
+        } else {
+            fireButton.enabled = false
+        }
     }
     
     // MARK: CL
@@ -104,6 +148,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             API.postLocationChange(user: currentPlayer, location: newLocation)
         }
+        updateFireButtonImage()
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
