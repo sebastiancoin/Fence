@@ -70,6 +70,8 @@ class DirectionalView: UIView {
     
     override func drawRect(rect: CGRect) {
         
+        clipsToBounds = false
+        
         let width = (bounds.size.width)
         let halfHeight = (width / 2.0)
         
@@ -80,26 +82,39 @@ class DirectionalView: UIView {
             }
         }
         
+        UIColor.blackColor().setFill()
+        let arc = UIBezierPath()
+        arc.moveToPoint(CGPoint(x: halfHeight, y: halfHeight))
+        arc.addArcWithCenter(CGPoint(x: halfHeight, y: halfHeight),
+            radius: halfHeight,
+            startAngle: CGFloat(0),
+            endAngle: CGFloat(M_PI * 2),
+            clockwise: true)
+        arc.closePath()
+        arc.fill()
         
         var height = (halfHeight * CGFloat(dUsers)) + (0.25 * halfHeight)
-        UIColor.greenColor().setFill()
+        UIColor.greenColor().set()
         
         if dUsers < 0.25  && dUsers > 0.1 {
             height = ((halfHeight * CGFloat(dUsers)) / 0.25) + (0.1 * halfHeight)
-            UIColor.yellowColor().setFill()
+            UIColor.yellowColor().set()
             
         } else if dUsers <= 0.1 {
             height = ((halfHeight * CGFloat(dUsers)) / 0.1)
-            UIColor.redColor().setFill()
+            UIColor.redColor().set()
         }
         
+
+        height = min(height, halfHeight)
+        
         let path = UIBezierPath()
-        path.moveToPoint(CGPoint(x: width - 8, y: halfHeight))
-        path.addLineToPoint(CGPoint(x: halfHeight, y: 0))
-        path.addLineToPoint(CGPoint(x: 8, y: halfHeight))
+        path.moveToPoint(CGPoint(x: width, y: halfHeight))
+        path.addLineToPoint(CGPoint(x: halfHeight-1, y: 0))
+        path.addLineToPoint(CGPoint(x: 1, y: halfHeight))
         path.closePath()
         path.fill()
-
+        
         let context = UIGraphicsGetCurrentContext()
         let stem = CGRect(x: halfHeight - 16, y: halfHeight, width: 32, height: height)
         CGContextFillRect(context, stem)

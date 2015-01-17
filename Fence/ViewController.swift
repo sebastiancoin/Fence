@@ -12,7 +12,6 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet var targetImageView: UIImageView!
     @IBOutlet var compass: DirectionalView!
     
     lazy var locationManager: CLLocationManager = {
