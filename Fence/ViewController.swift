@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import GameKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var targetImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        loadLocalPlayer {
+            user in
+            if let completedUser = user {
+                // start game process here!
+                println(completedUser)
+                completedUser.loadPhotoForSize(GKPhotoSizeSmall) {
+                    image, error in
+                    self.targetImageView.image = image
+                    if let _ = error { println(error) }
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,5 +36,19 @@ class ViewController: UIViewController {
     }
 
 
+    func loadLocalPlayer(completion: GKLocalPlayer? -> ()) {
+        let local = GKLocalPlayer.localPlayer()
+        local.authenticateHandler = {
+            authViewController, error in
+            if let auth = authViewController {
+                self.presentViewController(auth, animated: true, completion: nil)
+            } else if local.authenticated {
+                completion(local)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
 }
 
