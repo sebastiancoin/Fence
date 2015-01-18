@@ -26,7 +26,7 @@ class OverlayImageView: UIView {
         imageView.opaque = false
         imageView.image = image
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
-        let pop = dispatch_time(DISPATCH_TIME_NOW, Int64(100 * NSEC_PER_SEC))
+        let pop = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * NSEC_PER_SEC))
         dispatch_after(pop, dispatch_get_main_queue()) {
             self.imageView.userInteractionEnabled = false
             self.dismiss()

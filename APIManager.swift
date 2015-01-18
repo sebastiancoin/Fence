@@ -42,7 +42,7 @@ class API {
                                 let notif = UILocalNotification()
                                 notif.repeatInterval = NSCalendarUnit(0)
                                 notif.soundName = UILocalNotificationDefaultSoundName
-                                notif.alertBody = "You dead"
+                                notif.alertBody = "You dead!"
                                 notif.userInfo = [kNotifType:kKilledNotification]
                                 UIApplication.sharedApplication().presentLocalNotificationNow(notif)
                                 return
@@ -62,7 +62,7 @@ class API {
                             let notif = UILocalNotification()
                             notif.repeatInterval = NSCalendarUnit(0)
                             notif.soundName = UILocalNotificationDefaultSoundName
-                            notif.alertBody = "You matched"
+                            notif.alertBody = "Target acquired!"
                             notif.userInfo = [kNotifType:kMatchNotification]
                             UIApplication.sharedApplication().presentLocalNotificationNow(notif)
                         }
@@ -77,7 +77,7 @@ class API {
                             let notif = UILocalNotification()
                             notif.repeatInterval = NSCalendarUnit(0)
                             notif.soundName = UILocalNotificationDefaultSoundName
-                            notif.alertBody = "You 'bout to be dead"
+                            notif.alertBody = "They're near!"
                             notif.userInfo = [kNotifType:kPreyNotification]
                             UIApplication.sharedApplication().presentLocalNotificationNow(notif)
                         }

@@ -83,7 +83,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         currentPlayer.hunter = nil
         compass.targetLocation = nil
         //UIAlertView(title: "You've been killed", message: "you dead", delegate: nil, cancelButtonTitle: "aaah").show()
-        OverlayImageView(fromView: view, image: UIImage(named: "Dead")!)
+        OverlayImageView(fromView: view, image: UIImage(named: "Dead")!).backgroundColor = UIColor.whiteColor()
+        let deaths = NSUserDefaults().integerForKey("deaths")
+        let score = GKScore(leaderboardIdentifier: "deaths")
+        score.value = deaths+1
+        GKScore.reportScores([score]) { err in println(err) }
+        NSUserDefaults().setInteger(deaths + 1, forKey: "deaths")
     }
     
     
@@ -128,11 +133,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if compass.lockedOn {
             // HIT
             API.kill(&currentPlayer!)
-            OverlayImageView(fromView: view, image: UIImage(named: "Terminated Icon")!)
+            OverlayImageView(fromView: view, image: UIImage(named: "Terminated Icon")!).backgroundColor = UIColor(white: 0, alpha: 0.05)
             compass.targetLocation = nil
-            
+            let kills = NSUserDefaults().integerForKey("kills")
+            let score = GKScore(leaderboardIdentifier: "kills")
+            score.value = kills+1
+            GKScore.reportScores([score]) { err in println(err) }
+            NSUserDefaults().setInteger(kills + 1, forKey: "kills")
         } else {
             // MISS
+            UIView.animateWithDuration(0.3,
+                animations: {
+                    self.view.backgroundColor = UIColor(red: 0.5, green: 0, blue: 0, alpha: 1)
+                }, completion: { _ in
+                    UIView.animateWithDuration(0.3) {
+                        self.view.backgroundColor = UIColor.blackColor()
+                    }
+            })
             UIAlertView(title: "Miss!", message: nil, delegate: nil, cancelButtonTitle: "Okay").show()
         }
     }
