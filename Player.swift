@@ -13,10 +13,20 @@ let kPlayerIDKey = "kPlayerIDKey"
 
 class Player {
     var image: UIImage?
-    var target: Player?
-    var hunter: Player?
+    var target: Player? {
+        didSet {
+            update?(self)
+        }
+    }
+    var hunter: Player? {
+        didSet {
+            update?(self)
+        }
+    }
     var id: String
     var location: CLLocation?
+    
+    var update: (Player -> ())?
     
     /*
     var requiredAccuracy: CLLocationAccuracy {

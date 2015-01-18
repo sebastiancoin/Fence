@@ -42,15 +42,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "killed", name: kKilledNotification, object: nil)
         fireButton.enabled = false
         if let p = Player.currentPlayer() {
             currentPlayer = p
+            p.update = {
+                self.compass.targetLocation = $0.target?.location
+                self.updateFireButtonImage()
+            }
         } else {
             
             // Do any additional setup after loading the view, typically from a nib.
             // 42.292572, -83.716294
             
-            compass.targetLocation = CLLocation(latitude: 42.292572, longitude: -83.716294)
             loadLocalPlayer {
                 user in
                 if let completedUser = user {
@@ -69,6 +73,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingHeading()
     }
 
+    func killed() {
+        currentPlayer.target = nil
+        currentPlayer.hunter = nil
+        compass.targetLocation = nil
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -101,8 +111,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if compass.lockedOn {
             // HIT
+            API.kill(&currentPlayer!)
             UIAlertView(title: "Hit!", message: nil, delegate: nil, cancelButtonTitle: "Okay").show()
-            currentPlayer.target = nil
+            compass.targetLocation = nil
         } else {
             // MISS
             UIAlertView(title: "Miss!", message: nil, delegate: nil, cancelButtonTitle: "Okay").show()
@@ -156,6 +167,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             API.addUser(newLocation, image: nil) {
                 self.currentPlayer = $0
                 self.currentPlayer.saveAsCurrent()
+                self.currentPlayer.update = {
+                    self.compass.targetLocation = $0.target?.location
+                    self.updateFireButtonImage()
+                }
             }
         } else if currentPlayer != nil {
             currentPlayer.location = newLocation
