@@ -36,7 +36,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var addingUser = false
     var currentPlayer: Player!
-    var localProfilePic: UIImage?
+
+    var localPlayer: GKLocalPlayer!
+    
     var armed = true
     
     override func viewDidLoad() {
@@ -62,7 +64,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
                     image, error in
                     // TODO: set image
-                    self.localProfilePic = image
                     if let _ = error { println(error) }
                 }
             }
@@ -162,17 +163,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         UIView.animateWithDuration(0.3) {
             self.compass.currentLocation = newLocation
         }
-        if currentPlayer == nil && !addingUser {
-            addingUser = true
-            API.addUser(newLocation, image: nil) {
-                self.currentPlayer = $0
-                self.currentPlayer.saveAsCurrent()
-                self.currentPlayer.update = {
-                    self.compass.targetLocation = $0.target?.location
-                    self.updateFireButtonImage()
-                    return
+        if currentPlayer == nil && !addingUser &&
+            localPlayer != nil && localPlayer.authenticated {
+            
+                addingUser = true
+                API.addUser(localPlayer.playerID, location: newLocation, image: nil) {
+                    self.currentPlayer = $0
+                    self.currentPlayer.saveAsCurrent()
+                    self.currentPlayer.update = {
+                        self.compass.targetLocation = $0.target?.location
+                        self.updateFireButtonImage()
+                        return
+                    }
                 }
-            }
         } else if currentPlayer != nil {
             currentPlayer.location = newLocation
             API.postLocationChange(user: &currentPlayer) {
@@ -199,17 +202,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: GK
 
     func loadLocalPlayer(completion: GKLocalPlayer? -> ()) {
-        let local = GKLocalPlayer.localPlayer()
-        local.authenticateHandler = {
+        localPlayer = GKLocalPlayer.localPlayer()
+        localPlayer.authenticateHandler = {
             authViewController, error in
             if let auth = authViewController {
                 self.presentViewController(auth, animated: true, completion: nil)
-            } else if local.authenticated {
-                completion(local)
+            } else if self.localPlayer.authenticated {
+                completion(self.localPlayer)
             } else {
                 completion(nil)
             }
         }
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
 }

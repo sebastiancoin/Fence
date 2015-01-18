@@ -73,7 +73,7 @@ class API {
                             prey = Player(id: preyID)
                         }
                         
-                        if user.hunter?.id != hunter?.id {
+                        if user.hunter?.id != prey?.id {
                             let notif = UILocalNotification()
                             notif.repeatInterval = NSCalendarUnit(0)
                             notif.soundName = UILocalNotificationDefaultSoundName
@@ -88,8 +88,8 @@ class API {
         }
     }
     
-    class func addUser(location: CLLocation, image: UIImage?, completion: Player -> ()) {
-        let params = ["lat":location.coordinate.latitude, "lon":location.coordinate.longitude]
+    class func addUser(gcID: String, location: CLLocation, image: UIImage?, completion: Player -> ()) {
+        let params = ["lat":location.coordinate.latitude, "lon":location.coordinate.longitude, "name":gcID] as [String:NSObject]
         Alamofire.request(.POST, "\(root)/add_user", parameters: params)
             .responseString { _, _, string, _ in
                 completion(Player(id: string!))
