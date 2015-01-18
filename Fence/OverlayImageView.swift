@@ -22,11 +22,11 @@ class OverlayImageView: UIView {
     
     convenience init(fromView view: UIView, image: UIImage) {
         self.init(frame: view.bounds)
-        imageView.backgroundColor = UIColor.redColor() //clearColor()
+        imageView.backgroundColor = UIColor.clearColor()
         imageView.opaque = false
         imageView.image = image
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
-        let pop = dispatch_time(DISPATCH_TIME_NOW, Int64(10 * NSEC_PER_SEC))
+        let pop = dispatch_time(DISPATCH_TIME_NOW, Int64(100 * NSEC_PER_SEC))
         dispatch_after(pop, dispatch_get_main_queue()) {
             self.imageView.userInteractionEnabled = false
             self.dismiss()
@@ -37,7 +37,11 @@ class OverlayImageView: UIView {
         frame = view.frame
         addSubview(imageView)
         backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        alpha = 0
         view.addSubview(self)
+        UIView.animateWithDuration(0.3) {
+            self.alpha = 1.0
+        }
     }
 
     required init(coder aDecoder: NSCoder) {

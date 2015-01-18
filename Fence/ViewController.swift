@@ -83,7 +83,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         currentPlayer.hunter = nil
         compass.targetLocation = nil
         //UIAlertView(title: "You've been killed", message: "you dead", delegate: nil, cancelButtonTitle: "aaah").show()
-        OverlayImageView(fromView: view, image: UIImage(named: "Terminated Icon")!)
+        OverlayImageView(fromView: view, image: UIImage(named: "Dead")!)
     }
     
     
