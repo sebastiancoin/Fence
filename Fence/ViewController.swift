@@ -57,7 +57,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
                         image, error in
                         // TODO: set image
-                        localProfilePic = image
+                        self.localProfilePic = image
                         if let _ = error { println(error) }
                     }
                 }
@@ -156,7 +156,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.currentPlayer.saveAsCurrent()
             }
         } else {
-            API.postLocationChange(user: currentPlayer, location: newLocation)
+            self.currentPlayer.location = newLocation
+            API.postLocationChange(user: &currentPlayer!)
         }
         updateFireButtonImage()
     }

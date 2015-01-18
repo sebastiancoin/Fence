@@ -16,6 +16,7 @@ class Player {
     var target: Player?
     var hunter: Player?
     var id: String
+    var location: CLLocation?
     
     /*
     var requiredAccuracy: CLLocationAccuracy {

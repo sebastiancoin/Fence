@@ -8,26 +8,46 @@
 
 import CoreLocation
 import Alamofire
+import UIKit
 
 let root = "http://23.96.49.191/"
 
 class API {
     
-    class func postLocationChange(#user: Player, location: CLLocation) {
+    class func postLocationChange(inout #user: Player) {
         // TODO: POST
-        let params = [
-            "user_id":user.id,
-            "lat":"\(location.coordinate.latitude)",
-            "lon":"\(location.coordinate.longitude)"
-        ]
-        Alamofire.request(.POST, "\(root)backend/update_loc", params)
+        if let location = user.location {
+            let params = [
+                "user_id":user.id,
+                "lat":location.coordinate.latitude,
+                "lon":location.coordinate.longitude
+            ]
+            Alamofire.request(.POST, "\(root)backend/update_loc", parameters: params)
+                .responseJSON { (_, _, json: NSDictionary, _) in
+                    var huntLoc: CLLocation?
+                    if let huntLat = json["hunt_lat"] as? CLLocationDegrees {
+                        if let huntLon = json["hunt_lon"] as? CLLocationDegrees {
+                            if let huntID = json["hunt_id"] as? String {
+                                let hunter = Player(id: huntID)
+                                hunter.location = CLLocation(latitude: huntLat, longitude: huntLon)
+                                user.target = hunter
+                            }
+                        }
+                    }
+                    if let preyID = json["prey_id"] as? String {
+                        let prey = Player(id: preyID)
+                        user.hunter = prey
+                    }
+            }
+        }
     }
     
     class func addUser(location: CLLocation, image: UIImage?, completion: Player -> ()) {
-        params = [:]
-        Alamofire.request(.POST, "\(root)backend/add_user", params)
+        let params = ["lat":location.coordinate.latitude, "lon":location.coordinate.longitude]
+        Alamofire.request(.POST, "\(root)backend/add_user", parameters: params)
             .responseString { _, _, string, _ in
-                completion(Player(id: string))
+                completion(Player(id: string!))
         }
     }
+    
 }
