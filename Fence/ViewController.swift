@@ -36,7 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }()
     
     var currentPlayer: Player!
-    
+    var localProfilePic: UIImage?
     var armed = true
     
     override func viewDidLoad() {
@@ -44,26 +44,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         fireButton.enabled = false
         if let p = Player.currentPlayer() {
             currentPlayer = p
-        }
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        // 42.292572, -83.716294
-
-        compass.targetLocation = CLLocation(latitude: 42.292572, longitude: -83.716294)
-        loadLocalPlayer {
-            user in
-            if let completedUser = user {
-                // start game process here!
-                completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
-                    image, error in
-                    // TODO: set image
-                    //self.currentPlayer.image = image
-                    self.profileImage.image = image
-                    if let _ = error { println(error) }
+        } else {
+            
+            // Do any additional setup after loading the view, typically from a nib.
+            // 42.292572, -83.716294
+            
+            compass.targetLocation = CLLocation(latitude: 42.292572, longitude: -83.716294)
+            loadLocalPlayer {
+                user in
+                if let completedUser = user {
+                    // start game process here!
+                    completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
+                        image, error in
+                        // TODO: set image
+                        localProfilePic = image
+                        if let _ = error { println(error) }
+                    }
                 }
             }
         }
-        
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
@@ -152,7 +151,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.compass.currentLocation = newLocation
         }
         if currentPlayer == nil {
-            API.registerInitialLocation(newLocation, completion: {_ in})
+            API.addUser(newLocation, image: nil) {
+                self.currentPlayer = $0
+                self.currentPlayer.saveAsCurrent()
+            }
         } else {
             API.postLocationChange(user: currentPlayer, location: newLocation)
         }
