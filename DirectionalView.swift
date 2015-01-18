@@ -33,6 +33,13 @@ extension CLLocationDistance {
 
 class DirectionalView: UIView {
     
+    let buffer = degreesToRadians(10)
+    
+    var lockedOn: Bool {
+        let absAngle = abs(relativeAngle) % (2 * M_PI)
+        return absAngle + buffer < 2 * buffer
+    }
+    
     var relativeAngle: Double = 0.0
     
     var targetLocation: CLLocation? {
@@ -90,6 +97,9 @@ class DirectionalView: UIView {
         }
         
         UIColor.blackColor().setFill()
+        if lockedOn {
+            UIColor(red: 0, green: 0.5, blue: 0, alpha: 1).setFill()
+        }
         let arc = UIBezierPath()
         arc.moveToPoint(CGPoint(x: halfHeight, y: halfHeight))
         arc.addArcWithCenter(CGPoint(x: halfHeight, y: halfHeight),
@@ -97,9 +107,8 @@ class DirectionalView: UIView {
             startAngle: CGFloat(0),
             endAngle: CGFloat(M_PI * 2),
             clockwise: true)
-        arc.closePath()
         arc.fill()
-        
+    
         var height = (halfHeight * CGFloat(dUsers)) + (0.25 * halfHeight)
         UIColor.greenColor().set()
         

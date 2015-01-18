@@ -75,29 +75,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func pop(timeLeft: Int, _ label: UILabel) {
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC))
-        dispatch_after(popTime, dispatch_get_main_queue()) {
-            if timeLeft > 0 {
-                label.text = "\(timeLeft) seconds"
+        if timeLeft > 0 {
+            label.text = "\(timeLeft) seconds"
+            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC))
+            dispatch_after(popTime, dispatch_get_main_queue()) {
                 self.pop(timeLeft - 1, label)
-            } else {
-                label.removeFromSuperview()
-                self.armed = false
-                self.updateFireButtonImage()
             }
+        } else {
+            label.removeFromSuperview()
+            self.armed = true
+            self.updateFireButtonImage()
         }
+        
     }
     
     @IBAction func fire(sender: UIButton) {
-        println("FIRE!")
-        sender.setImage(UIImage(named: "Fire Open Pressed"), forState: .Normal)
         let timeOutLabel = UILabel(frame: sender.frame)
         timeOutLabel.textAlignment = .Center
+        timeOutLabel.textColor = UIColor.whiteColor()
         view.addSubview(timeOutLabel)
-        var timeLeft = 15
+        let timeLeft = 15
         armed = false
         updateFireButtonImage()
         pop(timeLeft, timeOutLabel)
+        
+        if compass.lockedOn {
+            // HIT
+            UIAlertView(title: "Hit!", message: nil, delegate: nil, cancelButtonTitle: "Okay").show()
+        } else {
+            // MISS
+            UIAlertView(title: "Miss!", message: nil, delegate: nil, cancelButtonTitle: "Okay").show()
+        }
     }
     
     func updateFireButtonImage() {

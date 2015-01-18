@@ -34,6 +34,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" image="Fire Cover"/>
+                                <state key="selected" image="Fire Open Pressed"/>
+                                <state key="highlighted" image="Fire Open Pressed"/>
                                 <connections>
                                     <action selector="fire:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jMp-NW-7Xc"/>
                                 </connections>
@@ -71,5 +73,6 @@
     <resources>
         <image name="Fire Cover" width="908" height="1048"/>
         <image name="Fire Open" width="907" height="1047"/>
+        <image name="Fire Open Pressed" width="902" height="1041"/>
     </resources>
 </document>
