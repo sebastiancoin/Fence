@@ -20,13 +20,13 @@ class OverlayImageView: UIView {
         })
     }
     
-    init(fromView view: UIView, image: UIImage) {
-        imageView = UIImageView()
-        imageView.backgroundColor = UIColor.clearColor()
+    convenience init(fromView view: UIView, image: UIImage) {
+        self.init(frame: view.bounds)
+        imageView.backgroundColor = UIColor.redColor() //clearColor()
         imageView.opaque = false
         imageView.image = image
-        super.init()
-        let pop = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * NSEC_PER_SEC))
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        let pop = dispatch_time(DISPATCH_TIME_NOW, Int64(10 * NSEC_PER_SEC))
         dispatch_after(pop, dispatch_get_main_queue()) {
             self.imageView.userInteractionEnabled = false
             self.dismiss()
@@ -35,12 +35,18 @@ class OverlayImageView: UIView {
         imageView.addGestureRecognizer(tap)
         imageView.userInteractionEnabled = true
         frame = view.frame
-        imageView.frame = frame
+        addSubview(imageView)
         backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        view.addSubview(self)
     }
 
     required init(coder aDecoder: NSCoder) {
         imageView = UIImageView()
         super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        imageView = UIImageView(frame: frame)
+        super.init(frame: frame)
     }
 }

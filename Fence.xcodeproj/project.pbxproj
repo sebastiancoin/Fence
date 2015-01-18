@@ -79,7 +79,7 @@
 		230CB38F1A6A64E10083B406 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = ../APIManager.swift; sourceTree = "<group>"; };
 		230CB3911A6A6FDC0083B406 /* FlickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickView.swift; path = ../FlickView.swift; sourceTree = "<group>"; };
 		230CB3931A6A7A850083B406 /* DirectionalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionalView.swift; path = ../DirectionalView.swift; sourceTree = "<group>"; };
-		232B2EDF1A6BC20000FE53A2 /* OverlayImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverlayImageView.swift; path = Fence/OverlayImageView.swift; sourceTree = "<group>"; };
+		232B2EDF1A6BC20000FE53A2 /* OverlayImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayImageView.swift; sourceTree = "<group>"; };
 		237224101A6B06E900A210DD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		23992C2C1A6B50640065BBD6 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		E439B67E1A6A444D007933BE /* Fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fence.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,7 +125,6 @@
 		E439B6751A6A444D007933BE = {
 			isa = PBXGroup;
 			children = (
-				232B2EDF1A6BC20000FE53A2 /* OverlayImageView.swift */,
 				23992C2C1A6B50640065BBD6 /* Alamofire.xcodeproj */,
 				230CB3891A6A495A0083B406 /* GameKit.framework */,
 				E439B6801A6A444D007933BE /* Fence */,
@@ -146,6 +145,7 @@
 		E439B6801A6A444D007933BE /* Fence */ = {
 			isa = PBXGroup;
 			children = (
+				232B2EDF1A6BC20000FE53A2 /* OverlayImageView.swift */,
 				237224101A6B06E900A210DD /* Images.xcassets */,
 				E439B6831A6A444D007933BE /* AppDelegate.swift */,
 				230CB3931A6A7A850083B406 /* DirectionalView.swift */,

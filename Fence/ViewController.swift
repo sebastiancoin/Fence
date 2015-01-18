@@ -44,6 +44,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "killed", name: kKilledNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "matched", name: kMatchNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "prey", name: kPreyNotification, object: nil)
         fireButton.enabled = false
         /*
         if let p = Player.currentPlayer() {
@@ -66,6 +68,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     // TODO: set image
                     if let _ = error { println(error) }
                 }
+            } else {
+                UIAlertView(title: "we need gamecenter dude", message: nil, delegate: nil, cancelButtonTitle: nil).show()
             }
         }
         //}
@@ -78,7 +82,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         currentPlayer.target = nil
         currentPlayer.hunter = nil
         compass.targetLocation = nil
-        UIAlertView(title: "You've been killed", message: "you dead", delegate: nil, cancelButtonTitle: "aaah").show()
+        //UIAlertView(title: "You've been killed", message: "you dead", delegate: nil, cancelButtonTitle: "aaah").show()
+        OverlayImageView(fromView: view, image: UIImage(named: "Terminated Icon")!)
+    }
+    
+    
+    func matched() {
+        //OverlayImageView(fromView: view, image: UIImage(named: "Lock On Icon")!)
+        println("found someone")
+    }
+    
+    func prey() {
+        OverlayImageView(fromView: view, image: UIImage(named: "Tracer Icon")!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -113,8 +128,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if compass.lockedOn {
             // HIT
             API.kill(&currentPlayer!)
-            UIAlertView(title: "Hit!", message: nil, delegate: nil, cancelButtonTitle: "Okay").show()
+            OverlayImageView(fromView: view, image: UIImage(named: "Terminated Icon")!)
             compass.targetLocation = nil
+            
         } else {
             // MISS
             UIAlertView(title: "Miss!", message: nil, delegate: nil, cancelButtonTitle: "Okay").show()

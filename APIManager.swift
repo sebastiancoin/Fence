@@ -92,6 +92,8 @@ class API {
         let params = ["lat":location.coordinate.latitude, "lon":location.coordinate.longitude, "name":gcID] as [String:NSObject]
         Alamofire.request(.POST, "\(root)/add_user", parameters: params)
             .responseString { _, _, string, _ in
+                println(params)
+                println(string)
                 completion(Player(id: string!))
         }
     }
