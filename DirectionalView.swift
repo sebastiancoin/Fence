@@ -97,13 +97,13 @@ class DirectionalView: UIView {
         }
         
         if targetLocation != nil {
-            UIColor.blackColor().setFill()
+            UIColor.whiteColor().setFill()
             let locked = lockedOn
             if locked {
-                UIColor(red: 0, green: 0.5, blue: 0, alpha: 1).setFill()
+                UIColor(red: 66/255.0, green: 255/255.0, blue: 35/255.0, alpha: 1).setFill()
             }
         } else {
-            UIColor.darkGrayColor().setFill()
+            UIColor.lightGrayColor().setFill()
         }
         
         // MARK: background circle

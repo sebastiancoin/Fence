@@ -14,7 +14,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet var compass: DirectionalView!
     @IBOutlet var fireButton: UIButton!
-    @IBOutlet var profileImage: UIImageView!
     
     lazy var locationManager: CLLocationManager = {
        let man = CLLocationManager()
@@ -44,30 +43,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "killed", name: kKilledNotification, object: nil)
         fireButton.enabled = false
+        /*
         if let p = Player.currentPlayer() {
             currentPlayer = p
             p.update = {
                 self.compass.targetLocation = $0.target?.location
                 self.updateFireButtonImage()
             }
-        } else {
+        } else {*/
             
-            // Do any additional setup after loading the view, typically from a nib.
-            // 42.292572, -83.716294
-            
-            loadLocalPlayer {
-                user in
-                if let completedUser = user {
-                    // start game process here!
-                    completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
-                        image, error in
-                        // TODO: set image
-                        self.localProfilePic = image
-                        if let _ = error { println(error) }
-                    }
+        // Do any additional setup after loading the view, typically from a nib.
+        // 42.292572, -83.716294
+        
+        loadLocalPlayer {
+            user in
+            if let completedUser = user {
+                // start game process here!
+                completedUser.loadPhotoForSize(GKPhotoSizeNormal) {
+                    image, error in
+                    // TODO: set image
+                    self.localProfilePic = image
+                    if let _ = error { println(error) }
                 }
             }
         }
+        //}
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
@@ -77,6 +77,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         currentPlayer.target = nil
         currentPlayer.hunter = nil
         compass.targetLocation = nil
+        UIAlertView(title: "You've been killed", message: "you dead", delegate: nil, cancelButtonTitle: "aaah").show()
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,7 +103,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func fire(sender: UIButton) {
         let timeOutLabel = UILabel(frame: sender.frame)
         timeOutLabel.textAlignment = .Center
-        timeOutLabel.textColor = UIColor.whiteColor()
         view.addSubview(timeOutLabel)
         let timeLeft = 15
         armed = false
@@ -170,6 +170,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.currentPlayer.update = {
                     self.compass.targetLocation = $0.target?.location
                     self.updateFireButtonImage()
+                    return
                 }
             }
         } else if currentPlayer != nil {

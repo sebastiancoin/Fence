@@ -10,6 +10,9 @@ import UIKit
 import GameKit
 
 let kKilledNotification = "kKilledNotification"
+let kNotifType = "kNtoifType"
+let kMatchNotification = "kmatchnotification"
+let kPreyNotification = "kIAMPREY"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -49,7 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        NSNotificationCenter.defaultCenter().postNotificationName(kKilledNotification, object: nil)
+        if let type = notification.userInfo?[kNotifType] as? String {
+            NSNotificationCenter.defaultCenter().postNotificationName(type, object: nil)
+        }
     }
 }
 

@@ -17,17 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogT-ee-PvI" customClass="DirectionalView" customModule="Fence" customModuleProvider="target">
-                                <rect key="frame" x="233" y="446" width="134" height="134"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="134" id="IQ5-oY-KcH"/>
-                                    <constraint firstAttribute="height" constant="134" id="ohP-75-7Gp"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkW-Nn-kcY">
-                                <rect key="frame" x="175" y="148" width="251" height="290"/>
+                                <rect key="frame" x="175" y="290" width="251" height="290"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="290" id="1ir-bF-XlS"/>
                                     <constraint firstAttribute="width" secondItem="mkW-Nn-kcY" secondAttribute="height" multiplier="214:247" id="BpA-lf-Ia4"/>
                                 </constraints>
                                 <state key="normal" image="Fire Open">
@@ -40,29 +33,25 @@
                                     <action selector="fire:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jMp-NW-7Xc"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SI9-Nf-yo1">
-                                <rect key="frame" x="240" y="20" width="120" height="120"/>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogT-ee-PvI" customClass="DirectionalView" customModule="Fence" customModuleProvider="target">
+                                <rect key="frame" x="233" y="20" width="134" height="134"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="EH8-eX-CpH"/>
-                                    <constraint firstAttribute="height" constant="120" id="Vmd-RW-4i4"/>
+                                    <constraint firstAttribute="width" constant="134" id="IQ5-oY-KcH"/>
+                                    <constraint firstAttribute="height" constant="134" id="ohP-75-7Gp"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SI9-Nf-yo1" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="3vc-PE-B77"/>
                             <constraint firstAttribute="centerX" secondItem="mkW-Nn-kcY" secondAttribute="centerX" id="A37-kG-Zeh"/>
-                            <constraint firstAttribute="centerX" secondItem="SI9-Nf-yo1" secondAttribute="centerX" id="EWE-Vn-tO1"/>
-                            <constraint firstItem="mkW-Nn-kcY" firstAttribute="top" secondItem="SI9-Nf-yo1" secondAttribute="bottom" constant="8" id="TCq-2U-Uhr"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="mkW-Nn-kcY" secondAttribute="bottom" constant="20" id="RKa-oA-j15"/>
                             <constraint firstAttribute="centerX" secondItem="ogT-ee-PvI" secondAttribute="centerX" id="axf-hm-gqM"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ogT-ee-PvI" secondAttribute="bottom" constant="20" id="jSO-SA-gsH"/>
-                            <constraint firstItem="ogT-ee-PvI" firstAttribute="top" secondItem="mkW-Nn-kcY" secondAttribute="bottom" constant="8" id="pCb-kR-lpb"/>
+                            <constraint firstItem="ogT-ee-PvI" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="uvf-nE-dM9"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="compass" destination="ogT-ee-PvI" id="93b-sZ-rj7"/>
                         <outlet property="fireButton" destination="mkW-Nn-kcY" id="4v1-sr-Ptk"/>
-                        <outlet property="profileImage" destination="SI9-Nf-yo1" id="vaR-Er-Eb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -71,7 +60,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Fire Cover" width="908" height="1048"/>
+        <image name="Fire Cover" width="907" height="1047"/>
         <image name="Fire Open" width="907" height="1047"/>
         <image name="Fire Open Pressed" width="902" height="1041"/>
     </resources>

@@ -27,7 +27,7 @@ class API {
             Alamofire.request(.POST, "\(root)/update_loc", parameters: params)
                 .responseString {
                     _, _, str, err in
-                    println(str)
+                    println(str!)
                 }
                 .responseJSON { (_, response, jsonDict, error) in
                     if let e = error {
@@ -40,11 +40,11 @@ class API {
                         if let killed = json["Life"] as? String {
                             if killed == "DEAD" {
                                 let notif = UILocalNotification()
-                                notif.fireDate = NSDate()
                                 notif.repeatInterval = NSCalendarUnit(0)
                                 notif.soundName = UILocalNotificationDefaultSoundName
                                 notif.alertBody = "You dead"
-                                UIApplication.sharedApplication().scheduleLocalNotification(notif)
+                                notif.userInfo = [kNotifType:kKilledNotification]
+                                UIApplication.sharedApplication().presentLocalNotificationNow(notif)
                                 return
                             }
                         }
@@ -58,12 +58,30 @@ class API {
                                 }
                             }
                         }
+                        if user.target?.id != hunter?.id {
+                            let notif = UILocalNotification()
+                            notif.repeatInterval = NSCalendarUnit(0)
+                            notif.soundName = UILocalNotificationDefaultSoundName
+                            notif.alertBody = "You matched"
+                            notif.userInfo = [kNotifType:kMatchNotification]
+                            UIApplication.sharedApplication().presentLocalNotificationNow(notif)
+                        }
                         user.target = hunter
                         
                         var prey: Player?
                         if let preyID = json["prey_id"] as? String {
                             prey = Player(id: preyID)
                         }
+                        
+                        if user.hunter?.id != hunter?.id {
+                            let notif = UILocalNotification()
+                            notif.repeatInterval = NSCalendarUnit(0)
+                            notif.soundName = UILocalNotificationDefaultSoundName
+                            notif.alertBody = "You 'bout to be dead"
+                            notif.userInfo = [kNotifType:kPreyNotification]
+                            UIApplication.sharedApplication().presentLocalNotificationNow(notif)
+                        }
+                        
                         user.hunter = prey
                     }
             }
