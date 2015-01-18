@@ -9,11 +9,24 @@
 import CoreLocation
 import UIKit
 
+let kPlayerIDKey = "kPlayerIDKey"
+
 class Player {
     var image: UIImage?
-    var target: Player?
-    var hunter: Player?
+    var target: Player? {
+        didSet {
+            update?(self)
+        }
+    }
+    var hunter: Player? {
+        didSet {
+            update?(self)
+        }
+    }
     var id: String
+    var location: CLLocation?
+    
+    var update: (Player -> ())?
     
     /*
     var requiredAccuracy: CLLocationAccuracy {
@@ -23,5 +36,19 @@ class Player {
     
     init(id: String) {
         self.id = id
+    }
+    
+    class func currentPlayer() -> Player? {
+        let defaults = NSUserDefaults()
+        if let playerID = defaults.stringForKey(kPlayerIDKey) {
+            return Player(id: playerID)
+        } else {
+            return nil
+        }
+    }
+    
+    func saveAsCurrent() {
+        let defaults = NSUserDefaults()
+        defaults.setObject(id, forKey: kPlayerIDKey)
     }
 }

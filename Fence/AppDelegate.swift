@@ -9,6 +9,11 @@
 import UIKit
 import GameKit
 
+let kKilledNotification = "kKilledNotification"
+let kNotifType = "kNtoifType"
+let kMatchNotification = "kmatchnotification"
+let kPreyNotification = "kIAMPREY"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,11 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let types = UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         return true
-    }
-    
-    func authenticateLocalPlayer() {
-        
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -47,5 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        if let type = notification.userInfo?[kNotifType] as? String {
+            NSNotificationCenter.defaultCenter().postNotificationName(type, object: nil)
+        }
+    }
 }
 

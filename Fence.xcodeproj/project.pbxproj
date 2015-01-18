@@ -12,17 +12,45 @@
 		230CB3901A6A64E10083B406 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB38F1A6A64E10083B406 /* APIManager.swift */; };
 		230CB3921A6A6FDC0083B406 /* FlickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB3911A6A6FDC0083B406 /* FlickView.swift */; };
 		230CB3941A6A7A850083B406 /* DirectionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB3931A6A7A850083B406 /* DirectionalView.swift */; };
-		E42838EA1A6A9E3400A031D0 /* Fence.app in Resources */ = {isa = PBXBuildFile; fileRef = E439B67E1A6A444D007933BE /* Fence.app */; };
-		E42838EB1A6A9E3500A031D0 /* Fence.app in Resources */ = {isa = PBXBuildFile; fileRef = E439B67E1A6A444D007933BE /* Fence.app */; };
+		232B2EE01A6BC20000FE53A2 /* OverlayImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EDF1A6BC20000FE53A2 /* OverlayImageView.swift */; };
+		237224111A6B06E900A210DD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237224101A6B06E900A210DD /* Images.xcassets */; };
+		23992C3C1A6B51A60065BBD6 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 23992C351A6B50640065BBD6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E439B6841A6A444D007933BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6831A6A444D007933BE /* AppDelegate.swift */; };
 		E439B6861A6A444D007933BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6851A6A444D007933BE /* ViewController.swift */; };
 		E439B6891A6A444D007933BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E439B6871A6A444D007933BE /* Main.storyboard */; };
-		E439B68B1A6A444D007933BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E439B68A1A6A444D007933BE /* Images.xcassets */; };
 		E439B68E1A6A444D007933BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E439B68C1A6A444D007933BE /* LaunchScreen.xib */; };
 		E439B69A1A6A444D007933BE /* FenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6991A6A444D007933BE /* FenceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		23992C321A6B50640065BBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23992C2C1A6B50640065BBD6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		23992C341A6B50640065BBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23992C2C1A6B50640065BBD6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		23992C361A6B50640065BBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23992C2C1A6B50640065BBD6 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = AlamofireTests;
+		};
+		23992C381A6B506F0065BBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23992C2C1A6B50640065BBD6 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
 		E439B6941A6A444D007933BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E439B6761A6A444D007933BE /* Project object */;
@@ -32,18 +60,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		23992C3A1A6B50FB0065BBD6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				23992C3C1A6B51A60065BBD6 /* Alamofire.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		230CB3891A6A495A0083B406 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		230CB38D1A6A5C9C0083B406 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = ../Player.swift; sourceTree = "<group>"; };
 		230CB38F1A6A64E10083B406 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = ../APIManager.swift; sourceTree = "<group>"; };
 		230CB3911A6A6FDC0083B406 /* FlickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickView.swift; path = ../FlickView.swift; sourceTree = "<group>"; };
-		230CB3931A6A7A850083B406 /* DirectionalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionalView.swift; sourceTree = "<group>"; };
+		230CB3931A6A7A850083B406 /* DirectionalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionalView.swift; path = ../DirectionalView.swift; sourceTree = "<group>"; };
+		232B2EDF1A6BC20000FE53A2 /* OverlayImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayImageView.swift; sourceTree = "<group>"; };
+		237224101A6B06E900A210DD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		23992C2C1A6B50640065BBD6 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		E439B67E1A6A444D007933BE /* Fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E439B6821A6A444D007933BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E439B6831A6A444D007933BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E439B6851A6A444D007933BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E439B6881A6A444D007933BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E439B68A1A6A444D007933BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E439B68D1A6A444D007933BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E439B6931A6A444D007933BE /* FenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E439B6981A6A444D007933BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,10 +112,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23992C2D1A6B50640065BBD6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23992C331A6B50640065BBD6 /* Alamofire.framework */,
+				23992C351A6B50640065BBD6 /* Alamofire.framework */,
+				23992C371A6B50640065BBD6 /* AlamofireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E439B6751A6A444D007933BE = {
 			isa = PBXGroup;
 			children = (
-				230CB3931A6A7A850083B406 /* DirectionalView.swift */,
+				23992C2C1A6B50640065BBD6 /* Alamofire.xcodeproj */,
 				230CB3891A6A495A0083B406 /* GameKit.framework */,
 				E439B6801A6A444D007933BE /* Fence */,
 				E439B6961A6A444D007933BE /* FenceTests */,
@@ -92,13 +145,15 @@
 		E439B6801A6A444D007933BE /* Fence */ = {
 			isa = PBXGroup;
 			children = (
+				232B2EDF1A6BC20000FE53A2 /* OverlayImageView.swift */,
+				237224101A6B06E900A210DD /* Images.xcassets */,
 				E439B6831A6A444D007933BE /* AppDelegate.swift */,
+				230CB3931A6A7A850083B406 /* DirectionalView.swift */,
 				E439B6851A6A444D007933BE /* ViewController.swift */,
 				230CB38D1A6A5C9C0083B406 /* Player.swift */,
 				230CB38F1A6A64E10083B406 /* APIManager.swift */,
 				230CB3911A6A6FDC0083B406 /* FlickView.swift */,
 				E439B6871A6A444D007933BE /* Main.storyboard */,
-				E439B68A1A6A444D007933BE /* Images.xcassets */,
 				E439B68C1A6A444D007933BE /* LaunchScreen.xib */,
 				E439B6811A6A444D007933BE /* Supporting Files */,
 			);
@@ -140,10 +195,12 @@
 				E439B67A1A6A444D007933BE /* Sources */,
 				E439B67B1A6A444D007933BE /* Frameworks */,
 				E439B67C1A6A444D007933BE /* Resources */,
+				23992C3A1A6B50FB0065BBD6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				23992C391A6B506F0065BBD6 /* PBXTargetDependency */,
 			);
 			name = Fence;
 			productName = Fence;
@@ -206,6 +263,12 @@
 			mainGroup = E439B6751A6A444D007933BE;
 			productRefGroup = E439B67F1A6A444D007933BE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 23992C2D1A6B50640065BBD6 /* Products */;
+					ProjectRef = 23992C2C1A6B50640065BBD6 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E439B67D1A6A444D007933BE /* Fence */,
@@ -214,15 +277,39 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		23992C331A6B50640065BBD6 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 23992C321A6B50640065BBD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		23992C351A6B50640065BBD6 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 23992C341A6B50640065BBD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		23992C371A6B50640065BBD6 /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = 23992C361A6B50640065BBD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		E439B67C1A6A444D007933BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237224111A6B06E900A210DD /* Images.xcassets in Resources */,
 				E439B6891A6A444D007933BE /* Main.storyboard in Resources */,
 				E42838EA1A6A9E3400A031D0 /* Fence.app in Resources */,
 				E439B68E1A6A444D007933BE /* LaunchScreen.xib in Resources */,
-				E439B68B1A6A444D007933BE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +333,7 @@
 				E439B6861A6A444D007933BE /* ViewController.swift in Sources */,
 				230CB38E1A6A5C9C0083B406 /* Player.swift in Sources */,
 				E439B6841A6A444D007933BE /* AppDelegate.swift in Sources */,
+				232B2EE01A6BC20000FE53A2 /* OverlayImageView.swift in Sources */,
 				230CB3941A6A7A850083B406 /* DirectionalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +349,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		23992C391A6B506F0065BBD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 23992C381A6B506F0065BBD6 /* PBXContainerItemProxy */;
+		};
 		E439B6951A6A444D007933BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E439B67D1A6A444D007933BE /* Fence */;
