@@ -97,7 +97,8 @@ class DirectionalView: UIView {
         }
         
         UIColor.blackColor().setFill()
-        if lockedOn {
+        let locked = lockedOn
+        if locked {
             UIColor(red: 0, green: 0.5, blue: 0, alpha: 1).setFill()
         }
         let arc = UIBezierPath()
@@ -108,20 +109,23 @@ class DirectionalView: UIView {
             endAngle: CGFloat(M_PI * 2),
             clockwise: true)
         arc.fill()
-    
+        
         var height = (halfHeight * CGFloat(dUsers)) + (0.25 * halfHeight)
         UIColor.greenColor().set()
         
-        if dUsers < 0.25  && dUsers > 0.1 {
-            height = ((halfHeight * CGFloat(dUsers)) / 0.25) + (0.1 * halfHeight)
-            UIColor.yellowColor().set()
-            
-        } else if dUsers <= 0.1 {
-            height = ((halfHeight * CGFloat(dUsers)) / 0.1)
-            UIColor.redColor().set()
+        if !locked {
+            if dUsers < 0.25  && dUsers > 0.1 {
+                height = ((halfHeight * CGFloat(dUsers)) / 0.25) + (0.1 * halfHeight)
+                UIColor.yellowColor().set()
+                
+            } else if dUsers <= 0.1 {
+                height = ((halfHeight * CGFloat(dUsers)) / 0.1)
+                UIColor.redColor().set()
+            }
+        } else {
+            UIColor.whiteColor().set()
         }
         
-
         height = min(height, halfHeight)
         
         let path = UIBezierPath()
