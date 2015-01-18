@@ -35,6 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         return man
     }()
     
+    var addingUser = false
     var currentPlayer: Player!
     var localProfilePic: UIImage?
     var armed = true
@@ -101,6 +102,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if compass.lockedOn {
             // HIT
             UIAlertView(title: "Hit!", message: nil, delegate: nil, cancelButtonTitle: "Okay").show()
+            currentPlayer.target = nil
         } else {
             // MISS
             UIAlertView(title: "Miss!", message: nil, delegate: nil, cancelButtonTitle: "Okay").show()
@@ -110,8 +112,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func updateFireButtonImage() {
         if armed {
             let me = locationManager.location
-            let targetLocation: CLLocation? = CLLocation(latitude: 42.292572, longitude: -83.716294)
-            if let target = targetLocation {
+            if let target = compass.targetLocation {
                 let distance = me.distanceFromLocation(target).feet
                 
                 if distance <= 50 {
@@ -150,14 +151,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         UIView.animateWithDuration(0.3) {
             self.compass.currentLocation = newLocation
         }
-        if currentPlayer == nil {
+        if currentPlayer == nil && !addingUser {
+            addingUser = true
             API.addUser(newLocation, image: nil) {
                 self.currentPlayer = $0
                 self.currentPlayer.saveAsCurrent()
             }
-        } else {
-            self.currentPlayer.location = newLocation
-            API.postLocationChange(user: &currentPlayer!)
+        } else if currentPlayer != nil {
+            currentPlayer.location = newLocation
+            API.postLocationChange(user: &currentPlayer) {
+                UIView.animateWithDuration(0.3) {
+                    self.compass.currentLocation = self.currentPlayer.location
+                    self.compass.targetLocation = self.currentPlayer.target?.location
+                }
+            }
         }
         updateFireButtonImage()
     }

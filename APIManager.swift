@@ -14,7 +14,7 @@ let root = "http://23.96.49.191/"
 
 class API {
     
-    class func postLocationChange(inout #user: Player) {
+    class func postLocationChange(inout #user: Player!, success: ()->()) {
         // TODO: POST
         if let location = user.location {
             let params = [
@@ -22,21 +22,29 @@ class API {
                 "lat":location.coordinate.latitude,
                 "lon":location.coordinate.longitude
             ]
-            Alamofire.request(.POST, "\(root)backend/update_loc", parameters: params)
-                .responseJSON { (_, _, json: NSDictionary, _) in
-                    var huntLoc: CLLocation?
-                    if let huntLat = json["hunt_lat"] as? CLLocationDegrees {
-                        if let huntLon = json["hunt_lon"] as? CLLocationDegrees {
-                            if let huntID = json["hunt_id"] as? String {
-                                let hunter = Player(id: huntID)
-                                hunter.location = CLLocation(latitude: huntLat, longitude: huntLon)
-                                user.target = hunter
+            let method = Method.POST
+            Alamofire.request(method, "\(root)backend/update_loc", parameters: nil)
+                .responseJSON { (_, response, json, error) in
+                    println(response!.)
+                    if let e = error {
+                        println(e)
+                        user = nil
+                    } else {
+                        let json = json as NSDictionary
+                        var huntLoc: CLLocation?
+                        if let huntLat = json["hunt_lat"] as? CLLocationDegrees {
+                            if let huntLon = json["hunt_lon"] as? CLLocationDegrees {
+                                if let huntID = json["hunt_id"] as? String {
+                                    let hunter = Player(id: huntID)
+                                    hunter.location = CLLocation(latitude: huntLat, longitude: huntLon)
+                                    user.target = hunter
+                                }
                             }
                         }
-                    }
-                    if let preyID = json["prey_id"] as? String {
-                        let prey = Player(id: preyID)
-                        user.hunter = prey
+                        if let preyID = json["prey_id"] as? String {
+                            let prey = Player(id: preyID)
+                            user.hunter = prey
+                        }
                     }
             }
         }

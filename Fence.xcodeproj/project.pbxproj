@@ -13,7 +13,6 @@
 		230CB3921A6A6FDC0083B406 /* FlickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB3911A6A6FDC0083B406 /* FlickView.swift */; };
 		230CB3941A6A7A850083B406 /* DirectionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CB3931A6A7A850083B406 /* DirectionalView.swift */; };
 		237224111A6B06E900A210DD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237224101A6B06E900A210DD /* Images.xcassets */; };
-		23992C3B1A6B51A60065BBD6 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 23992C331A6B50640065BBD6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		23992C3C1A6B51A60065BBD6 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 23992C351A6B50640065BBD6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E439B6841A6A444D007933BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6831A6A444D007933BE /* AppDelegate.swift */; };
 		E439B6861A6A444D007933BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439B6851A6A444D007933BE /* ViewController.swift */; };
@@ -67,7 +66,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				23992C3B1A6B51A60065BBD6 /* Alamofire.framework in CopyFiles */,
 				23992C3C1A6B51A60065BBD6 /* Alamofire.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

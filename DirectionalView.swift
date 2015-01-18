@@ -96,11 +96,18 @@ class DirectionalView: UIView {
             }
         }
         
-        UIColor.blackColor().setFill()
-        let locked = lockedOn
-        if locked {
-            UIColor(red: 0, green: 0.5, blue: 0, alpha: 1).setFill()
+        if targetLocation != nil {
+            UIColor.blackColor().setFill()
+            let locked = lockedOn
+            if locked {
+                UIColor(red: 0, green: 0.5, blue: 0, alpha: 1).setFill()
+            }
+        } else {
+            UIColor.darkGrayColor().setFill()
         }
+        
+        // MARK: background circle
+        
         let arc = UIBezierPath()
         arc.moveToPoint(CGPoint(x: halfHeight, y: halfHeight))
         arc.addArcWithCenter(CGPoint(x: halfHeight, y: halfHeight),
@@ -110,41 +117,55 @@ class DirectionalView: UIView {
             clockwise: true)
         arc.fill()
         
-        var height = (halfHeight * CGFloat(dUsers)) + (0.25 * halfHeight)
-        UIColor.greenColor().set()
-        
-        //if !locked {
-        if dUsers < 0.25  && dUsers > 0.1 {
-            height = ((halfHeight * CGFloat(dUsers)) / 0.25) + (0.1 * halfHeight)
-            UIColor.yellowColor().set()
+        if targetLocation != nil {
+            var height = (halfHeight * CGFloat(dUsers)) + (0.25 * halfHeight)
+            UIColor.greenColor().set()
             
-        } else if dUsers <= 0.1 {
-            height = ((halfHeight * CGFloat(dUsers)) / 0.1)
-            UIColor.redColor().set()
+            if dUsers < 0.25  && dUsers > 0.1 {
+                height = ((halfHeight * CGFloat(dUsers)) / 0.25) + (0.1 * halfHeight)
+                UIColor.yellowColor().set()
+                
+            } else if dUsers <= 0.1 {
+                height = ((halfHeight * CGFloat(dUsers)) / 0.1)
+                UIColor.redColor().set()
+            }
+            
+            // MARK: arrow
+            
+            height = min(height, halfHeight)
+            
+            let path = UIBezierPath()
+            path.moveToPoint(CGPoint(x: width, y: halfHeight))
+            path.addLineToPoint(CGPoint(x: halfHeight-1, y: 0))
+            path.addLineToPoint(CGPoint(x: 1, y: halfHeight))
+            path.closePath()
+            path.fill()
+            
+            // MARK: stem
+            
+            let context = UIGraphicsGetCurrentContext()
+            let stem = CGRect(x: halfHeight - 16, y: halfHeight, width: 32, height: height)
+            CGContextFillRect(context, stem)
+            
+            // MARK: label
+            
+            UIColor.blackColor().set()
+            
+            let dFeet = milesToFeet(dUsers)
+            var paraStyle = NSMutableParagraphStyle()
+            paraStyle.alignment = .Center
+            let label = "\(Int(ceil(dFeet))) ft" as NSString
+            label.drawInRect(CGRect(x: 0, y: halfHeight-14, width: width, height: 14),
+                withAttributes: [NSParagraphStyleAttributeName:paraStyle])
+        } else {
+            UIColor.whiteColor().set()
+            var paraStyle = NSMutableParagraphStyle()
+            paraStyle.alignment = .Center
+            let label = "Searching..." as NSString
+            label.drawInRect(CGRect(x: 0, y: halfHeight-12, width: width, height: 24),
+                withAttributes: [NSParagraphStyleAttributeName:paraStyle])
         }
-        //} else {
-        //    UIColor.whiteColor().set()
-        //}
         
-        height = min(height, halfHeight)
         
-        let path = UIBezierPath()
-        path.moveToPoint(CGPoint(x: width, y: halfHeight))
-        path.addLineToPoint(CGPoint(x: halfHeight-1, y: 0))
-        path.addLineToPoint(CGPoint(x: 1, y: halfHeight))
-        path.closePath()
-        path.fill()
-        
-        let context = UIGraphicsGetCurrentContext()
-        let stem = CGRect(x: halfHeight - 16, y: halfHeight, width: 32, height: height)
-        CGContextFillRect(context, stem)
-        
-        let dFeet = milesToFeet(dUsers)
-        UIColor.blackColor().setStroke()
-        var paraStyle = NSMutableParagraphStyle()
-        paraStyle.alignment = .Center
-        let label = "\(Int(ceil(dFeet))) ft" as NSString
-        label.drawInRect(CGRect(x: 8, y: halfHeight-14, width: width - 16, height: 14),
-            withAttributes: [NSParagraphStyleAttributeName:paraStyle])
     }
 }
